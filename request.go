@@ -9,23 +9,55 @@ import (
 )
 
 type (
+	// Request 上行请求
 	Request struct {
-		Host    string
-		IpAddr  string
-		Header  map[string]string
-		Params  map[string]interface{}
-		Get     map[string]interface{}
-		Post    map[string]interface{}
-		Put     map[string]interface{}
-		File    *RequestFile
-		IsGet   bool
-		IsPost  bool
-		IsPut   bool
-		IsOpt   bool
-		IsDel   bool
+		// Host 请求地址
+		Host string
+
+		// Path 请求子地址
+		Path string
+
+		// IpAddr IP地址
+		IpAddr string
+
+		// Header 头部信息
+		Header map[string]string
+
+		// Params 上行参数集合
+		Params map[string]interface{}
+
+		// Get get请求参数集合
+		Get map[string]interface{}
+
+		// Post post请求参数集合
+		Post map[string]interface{}
+
+		// Put put请求参数集合
+		Put map[string]interface{}
+
+		// File 上传的文件
+		File *RequestFile
+
+		// IsGet 是否Get请求
+		IsGet bool
+
+		// IsPost 是否Post请求
+		IsPost bool
+
+		// IsPut 是否Put请求
+		IsPut bool
+
+		// IsOpt 是否Option请求
+		IsOpt bool
+
+		// IsDel 是否Delete请求
+		IsDel bool
+
+		// IsPatch 是否Patch请求
 		IsPatch bool
 	}
 
+	// RequestFile 上行文件
 	RequestFile struct {
 		Filename string
 		Header   map[string][]string
@@ -34,8 +66,8 @@ type (
 	}
 )
 
-func New(req *http.Request) {
-	r = &Request{"", "", make(map[string]string, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), new(RequestFile), false, false, false, false, false, false}
+func New(req *http.Request) *Request {
+	r := &Request{"", "", "", make(map[string]string, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), new(RequestFile), false, false, false, false, false, false}
 
 	// Header
 	for k, v := range req.Header {
@@ -81,14 +113,17 @@ func New(req *http.Request) {
 	}
 
 	// Get|Put|Delete请求藏在地址中的参数
-	if req.Method == "GET" || req.Method == "PUT" || req.Method == "DELETE" {
-		for _, v := range c.Params {
-			r.Get[v.Key] = v.Value
-		}
-	}
+	//if req.Method == "GET" || req.Method == "PUT" || req.Method == "DELETE" {
+	//	for _, v := range req.Params {
+	//		r.Get[v.Key] = v.Value
+	//	}
+	//}
 
 	// 获取请求地址
 	r.Host = req.Host
+
+	// 获取请求子地址
+	r.Path = req.URL.Path
 
 	// 获取客户端ip地址
 	r.IpAddr = GetIpAddr(req)
