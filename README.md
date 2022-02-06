@@ -1,7 +1,7 @@
 # ReqHelper
 ---
 
-![go](https://img.shields.io/github/go-mod/go-version/kisschou/TypeConverter?color=green&style=flat-square) ![commit](https://img.shields.io/github/last-commit/kisschou/TypeConverter?color=green&style=flat-square) ![license](https://img.shields.io/github/license/kisschou/TypeConverter?color=green&style=flat-square)
+![go](https://img.shields.io/github/go-mod/go-version/kisschou/ReqHelper?color=green&style=flat-square) ![commit](https://img.shields.io/github/last-commit/kisschou/ReqHelper?color=green&style=flat-square) ![license](https://img.shields.io/github/license/kisschou/ReqHelper?color=green&style=flat-square)
 
 ## 关于
 
