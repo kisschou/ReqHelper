@@ -55,6 +55,9 @@ type (
 
 		// IsPatch 是否Patch请求
 		IsPatch bool
+
+		// Extra 其他参数, 由外部注入的参数
+		Extra map[string]interface{}
 	}
 
 	// RequestFile 上行文件
@@ -67,7 +70,7 @@ type (
 )
 
 func New(req *http.Request) *Request {
-	r := &Request{"", "", "", make(map[string]string, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), new(RequestFile), false, false, false, false, false, false}
+	r := &Request{"", "", "", make(map[string]string, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), new(RequestFile), false, false, false, false, false, false, make(map[string]interface{}, 0)}
 
 	// Header
 	for k, v := range req.Header {
