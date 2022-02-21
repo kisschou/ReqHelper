@@ -73,7 +73,25 @@ type (
 )
 
 func New(req *http.Request) *Request {
-	r := &Request{"", "", "", make(map[string]string, 0), "", make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), make(map[string]interface{}, 0), new(RequestFile), false, false, false, false, false, false, make(map[string]interface{}, 0)}
+	r := &Request{
+		Host:    "",
+		Path:    "",
+		IpAddr:  "",
+		Header:  make(map[string]string, 0),
+		Method:  "",
+		Params:  make(map[string]interface{}, 0),
+		Get:     make(map[string]interface{}, 0),
+		Post:    make(map[string]interface{}, 0),
+		Put:     make(map[string]interface{}, 0),
+		File:    new(RequestFile),
+		IsGet:   false,
+		IsPost:  false,
+		IsPut:   false,
+		IsOpt:   false,
+		IsDel:   false,
+		IsPatch: false,
+		Extra:   make(map[string]interface{}, 0),
+	}
 
 	// Header
 	for k, v := range req.Header {
