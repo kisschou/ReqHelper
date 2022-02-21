@@ -23,6 +23,9 @@ type (
 		// Header 头部信息
 		Header map[string]string
 
+		// Method 请求方式
+		Method string
+
 		// Params 上行参数集合
 		Params map[string]interface{}
 
@@ -121,6 +124,9 @@ func New(req *http.Request) *Request {
 	//		r.Get[v.Key] = v.Value
 	//	}
 	//}
+
+	// 请求方式
+	r.Method = req.Method
 
 	// 获取请求地址
 	r.Host = req.Host
