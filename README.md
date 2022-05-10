@@ -18,7 +18,7 @@
 1. 在需要使用的脚本中引入包:
 
 ```go
-import "github.com/kisschou/ReqHelper"
+import "ateshit.icu/kisschou/ReqHelper"
 ```
 
 <br />
