@@ -1,3 +1,3 @@
-module github.com/kisschou/ReqHelper
+module ateshit.icu/kisschou/ReqHelper
 
 go 1.17
